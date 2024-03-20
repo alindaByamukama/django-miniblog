@@ -1,0 +1,21 @@
+WK8
+- Scaffold a new django application
+
+- Setup a the necessary apps for your blog application
+
+- Set up templates for your application
+
+- Create forms for your application
+WK9
+- Create Models for blog application
+
+- Make sure the necessary relationships are setup
+
+- Connect your application to a database
+WK10
+
+WK11
+
+WK12
+
+WK13

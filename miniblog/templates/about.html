@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
+{% extends 'layout.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+{% block title %}
+    About
+{% endblock %}
 
-<body>
+{% block content %}
     <h1>About</h1>
-    <p>This is a mini blog app, built using Django.</p>
+    <p>This is a Django mini blog app.</p>
     <p>Go back to my <a href="/">Home</a> page.</p>
-</body>
-
-</html>
+{% endblock%}

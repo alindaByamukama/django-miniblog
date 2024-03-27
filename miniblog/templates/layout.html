@@ -15,7 +15,7 @@
     <nav>
         <a href="/" title='home'>🏠</a> |
         <a href="/about" title='about'>🤔</a> |
-        <a href="/posts" title='posts'>📰</a>
+        <a href="{% url 'posts:list' %}" title='posts list'>📰</a>
     </nav>
     <main>
         {% block content %}

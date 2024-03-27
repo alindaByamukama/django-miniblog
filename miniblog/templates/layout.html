@@ -13,9 +13,15 @@
 </head>
 <body>
     <nav>
-        <a href="/" title='home'>🏠</a> |
-        <a href="/about" title='about'>🤔</a> |
-        <a href="{% url 'posts:list' %}" title='posts list'>📰</a>
+        <a href="/" title='home'>
+            <span role="img" aria-label="Home" >🏠</span>
+        </a> |
+        <a href="/about" title='about'>
+            <span role="img" aria-label="About" >🤔</span>
+        </a> |
+        <a href="{% url 'posts:list' %}" title='posts list'>
+            <span role="img" aria-label="Posts" >📰</span>
+        </a>
     </nav>
     <main>
         {% block content %}

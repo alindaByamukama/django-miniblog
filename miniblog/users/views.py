@@ -1,6 +1,5 @@
 from django.shortcuts import render
-
-# from users.forms import RegisterUser
+from django.contrib.auth.form import RegisterUserForm
 
 # Create your views here.
 def register_user(request):

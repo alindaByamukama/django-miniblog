@@ -8,5 +8,6 @@ def register_user(request):
         if form.is_valid():
             form.save()
             return redirect("posts:list")
-    form = UserCreationForm()        
+    else:
+        form = UserCreationForm()        
     return render(request, 'users/register_user.html', {"form": form})

@@ -24,6 +24,10 @@
       <a href="{% url 'users:register' %}" title="user registration">
         <span role="img" aria-label="User Registration">👤</span>
       </a>
+      |
+      <a href="{% url 'users:login' %}" title="user login">
+        <span role="img" aria-label="User Login">🚪</span>
+      </a>
     </nav>
     <main>{% block content %} {% endblock %}</main>
   </body>

@@ -7,7 +7,7 @@ class BlogPost(models.Model):
     body = models.TextField()
     slug = models.SlugField()
     date = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User.username)
 
     def __str__(self):
         return self.title

@@ -8,6 +8,12 @@ class BlogPostListCreate(generics.ListCreateAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
 
+class BlogPostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = BlogPost.objects.all()
+    serializer_class = BlogPostSerializer
+    # blogpost id
+    lookup_field = "pk"
+
 def posts_list(request):
     blog_posts = BlogPost.objects.all().order_by('-date')
     return render(request, 'posts/posts_list.html', {'posts': blog_posts})

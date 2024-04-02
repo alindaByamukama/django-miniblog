@@ -8,15 +8,15 @@
     <section>
         <h1>Posts</h1>
         
-        {% for post in blogposts %}
+        {% for blogpost in blogposts %}
             <article class="post">
                 <h2>
-                    <a href="{% url 'posts:page' slug=post.slug %}">
-                        {{post.title}}
+                    <a href="{% url 'posts:page' slug=blogpost.slug %}">
+                        {{blogpost.title}}
                     </a>                    
                 </h2>
-                <p>{{post.date}}</p>
-                <p>{{post.body}}</p>
+                <p>{{blogpost.date}}</p>
+                <p>{{blogpost.body}}</p>
             </article>
         {% endfor %}
     </section>

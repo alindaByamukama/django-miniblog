@@ -14,10 +14,10 @@ class BlogPostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     # blogpost id
     lookup_field = "pk"
 
-# def posts_list(request):
-#     blog_posts = BlogPost.objects.all().order_by('-date')
-#     return render(request, 'posts/posts_list.html', {'posts': blog_posts})
+def posts_list(request):
+    posts = BlogPost.objects.all().order_by('-date')
+    return render(request, 'posts/posts_list.html', {'posts': posts})
 
 # def post_page(request, slug):
-#     blog_post = BlogPost.objects.get(slug=slug)
-#     return render(request, 'posts/post_page.html', {'post': blog_post})
+#     post = BlogPost.objects.get(slug=slug)
+#     return render(request, 'posts/post_page.html', {'post': post})

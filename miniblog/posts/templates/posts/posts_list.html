@@ -8,7 +8,7 @@
     <section>
         <h1>Posts</h1>
         
-        {% for post in posts %}
+        {% for post in blogposts %}
             <article class="post">
                 <h2>
                     <a href="{% url 'posts:page' slug=post.slug %}">

@@ -20,4 +20,4 @@ def login_user(request):
             return redirect("posts:list")
     else:
         form = AuthenticationForm()
-    return render(request, "users/login.html", {"form": form})
+    return render(request, "users/login_user.html", {"form": form})

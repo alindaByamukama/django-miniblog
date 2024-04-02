@@ -5,7 +5,7 @@ from .serializers import BlogPostSerializer
 
 # Create your views here.
 class BlogPostListCreate(generics.ListCreateAPIView):
-    queryset = BlogPost.obejcts.all()
+    queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
 
 def posts_list(request):

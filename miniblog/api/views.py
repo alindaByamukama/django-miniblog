@@ -1,4 +1,4 @@
-from rest_framework import generics, status, permissions
+from rest_framework import generics, status, permissions, viewsets
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
@@ -17,6 +17,11 @@ class APIRoot(APIView):
             'posts': reverse('blogpost-detail', request=request, format=format)
         })
 
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    # list and retrieve 
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer

@@ -5,8 +5,8 @@ from . import views
 urlpatterns = format_suffix_patterns([
     path('users/', views.UserList.as_view(), name='user-list'),
     path('users/<int:pk>', views.UserDetail.as_view(), name='user-detail'),
-    path('blogposts/', views.BlogPostListCreate.as_view(), name='blogpost-list-create'),
-    path('blogposts/details/<int:pk>', views.BlogPostRetrieve.as_view(), name='blogpost-retrieve'),
-    path('blogposts/<int:pk>', views.BlogPostRetrieveUpdateDestroy.as_view(), name='blogpost-update'),
+    path('blogposts/', views.BlogPostList.as_view(), name='blogpost-list'),
+    path('blogposts/<int:pk>/details', views.BlogPostRetrieve.as_view(), name='blogpost-detail'),
+    path('blogposts/<int:pk>/update', views.BlogPostRetrieveUpdateDestroy.as_view(), name='blogpost-update'),
     path('blogposts/filter/', views.BlogPostListFilter.as_view(), name='blogpost-filter')
 ])

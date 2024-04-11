@@ -10,6 +10,10 @@ from rest_framework.views import APIView
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class UserCreate(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 class BlogPostListCreate(generics.ListCreateAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer

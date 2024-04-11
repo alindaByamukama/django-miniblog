@@ -14,7 +14,7 @@ class APIRoot(APIView):
     def get(self, request, format=None):
         return Response({
             'users': reverse('user-list',request=request, format=format),
-            'posts': reverse('post-list', request=request, format=format)
+            'posts': reverse('blogpost-detail', request=request, format=format)
         })
 
 class UserList(generics.ListAPIView):
@@ -24,14 +24,11 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-class BlogPostListCreate(generics.ListCreateAPIView):
+class BlogPostList(generics.ListAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
+
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    # delete ALL blog posts route
-    def delete(self, request, *args, **kwargs):
-        BlogPost.objects.all().delete()
-        return Response(status.HTTP_204_NO_CONTENT)
     
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -45,6 +42,7 @@ class BlogPostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
     lookup_field = "pk"
+    
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 
 class BlogPostListFilter(APIView):

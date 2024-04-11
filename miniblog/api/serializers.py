@@ -7,7 +7,8 @@ class BlogPostSerializer(serializers.ModelSerializer):
         model = BlogPost
         fields = ['id', 'title', 'content', 'published', 'author']
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
+    posts = serializers.PrimaeryKeyRelatedField(many=True, queryset=BlogPost)
     class Meta:
         model = User
-        fields = ['url', 'username', 'email']
+        fields = ['url', 'username', 'email', 'posts']

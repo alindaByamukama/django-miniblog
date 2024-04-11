@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import generics, status
+from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from .models import BlogPost
@@ -17,6 +17,7 @@ class UserDetail(generics.RetrieveAPIView):
 class BlogPostListCreate(generics.ListCreateAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     # delete ALL blog posts route
     def delete(self, request, *args, **kwargs):
         BlogPost.objects.all().delete()
@@ -29,8 +30,10 @@ class BlogPostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
     lookup_field = "pk"
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class BlogPostListFilter(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     def get(seld, request, format=None):
         # get title from query params or default to empty string
         title = request.query_params.get('title', '')

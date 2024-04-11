@@ -30,8 +30,7 @@ class BlogPostViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
     
-    serializer = BlogPostSerializer
-    def get_queryset(self):
-        # get title from query params or default to empty string
+    def get_queryset(self, serializer):
+        # return a list of blog posts by title
         title = self.kwargs['title']
         return BlogPost.objects.filter(blogpost__title=title)

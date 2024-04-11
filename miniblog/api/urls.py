@@ -1,36 +1,12 @@
-from django.urls import path
-from .views import APIRoot, BlogPostViewSet, UserViewSet
-from rest_framework.urlpatterns import format_suffix_patterns
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
-user_list = UserViewSet.as_view({
-    'get': 'list'
-})
+from api import views
 
-user_detail = UserViewSet.as_view({
-    'get': 'retrieve'
-})
+router = DefaultRouter()
+router.register(r'blogposts', views.BlogPostViewSet, basename='blogpost')
+router.register(r'users', views.UserViewSet, basename='user')
 
-blogpost_list = BlogPostViewSet.as_view({
-    'get': 'list',
-    'post': 'create'
-})
-
-blogpost_detail = BlogPostViewSet.as_view({
-    'get': 'retrieve',
-    'put': 'update',
-    'patch': 'partial_update',
-    'delete': 'destroy'
-})
-
-blogpost_filter = BlogPostViewSet.as_view({
-    'get': 'list'
-})
-
-urlpatterns = format_suffix_patterns([
-    path('', APIRoot),
-    path('users/', user_list, name='user-list'),
-    path('users/<int:pk>', user_detail, name='user-detail'),
-    path('blogposts/', blogpost_list, name='blogpost-list'),
-    path('blogposts/<int:pk>', blogpost_detail, name='blogpost-detail'),
-    path('blogposts/(?P<title>.+)/$:', blogpost_filter, name='blogpost-filter')
-])
+urlpatterns = [
+    path('', include(router.urls)),
+]

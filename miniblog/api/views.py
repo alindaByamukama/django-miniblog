@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from .models import BlogPost
 from .serializers import BlogPostSerializer, UserSerializer
 from rest_framework.views import APIView
+from .permissions import IsAuthorOrReadOnly
 
 # Create your views here.
 class UserList(generics.ListAPIView):
@@ -30,7 +31,7 @@ class BlogPostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
     lookup_field = "pk"
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 
 class BlogPostListFilter(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

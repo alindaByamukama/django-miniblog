@@ -35,7 +35,7 @@ class BlogPostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 
 class BlogPostListFilter(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    def get(seld, request, format=None):
+    def get(self, request, format=None):
         # get title from query params or default to empty string
         title = request.query_params.get('title', '')
 

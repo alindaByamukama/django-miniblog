@@ -1,5 +1,5 @@
 from django.db import models
-# from users.models import Users
+from users.models import Users
 
 # Create your models here.
 class BlogPost(models.Model):
@@ -7,8 +7,7 @@ class BlogPost(models.Model):
     body = models.TextField()
     slug = models.SlugField()
     date = models.DateTimeField(auto_now_add=True)
-    # author = models.ForeignKey(Users, null=True, on_delete=models.CASCADE)
+    author = models.ForeignKey(Users, null=True, on_delete=models.RESTRICT)
 
     def __str__(self):
-        return self.title
-        # return f"Post by {self.user.username} at {self.date}"
+        return f"{self.title} by {self.user.username} at {self.date}"

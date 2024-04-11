@@ -10,11 +10,21 @@ user_detail = UserViewSet.as_view({
     'get': 'retrieve'
 })
 
-blogpost_list
+blogpost_list = BlogPostViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+})
 
-blogpost_detail
+blogpost_detail = BlogPostViewSet.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy'
+})
 
-blogpost_filter
+blogpost_filter = BlogPostViewSet.as_view({
+    'get': 'list'
+})
 
 urlpatterns = format_suffix_patterns([
     path('', APIRoot),

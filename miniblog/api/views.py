@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
+from django.contrib.auth.models import User
 from .models import BlogPost
-from .serializers import BlogPostSerializer
+from .serializers import BlogPostSerializer, UserSerializer
 from rest_framework.views import APIView
 
 # Create your views here.
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 class BlogPostListCreate(generics.ListCreateAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer

@@ -6,9 +6,9 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = format_suffix_patterns([
     path('', APIRoot),
-    path('users/', views.UserList.as_view(), name='user-list'),
-    path('users/<int:pk>', views.UserDetail.as_view(), name='user-detail'),
-    path('blogposts/', views.BlogPostList.as_view(), name='blogpost-list'),
-    path('blogposts/<int:pk>/details', views.BlogPostRetrieve.as_view(), name='blogpost-detail'),
-    path('blogposts/filter/', views.BlogPostListFilter.as_view(), name='blogpost-filter')
+    path('users/', user_list, name='user-list'),
+    path('users/<int:pk>', user_detail, name='user-detail'),
+    path('blogposts/', blogpost_list, name='blogpost-list'),
+    path('blogposts/<int:pk>', blogpost_detail, name='blogpost-detail'),
+    path('blogposts/(?P<title>.+)/$:', blogpost_filter, name='blogpost-filter')
 ])

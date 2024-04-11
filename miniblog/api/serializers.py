@@ -9,7 +9,7 @@ class BlogPostSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'content', 'published', 'author']
 
 class UserSerializer(serializers.ModelSerializer):
-    posts = serializers.PrimaeryKeyRelatedField(many=True, queryset=BlogPost)
+    posts = serializers.PrimaryKeyRelatedField(many=True, queryset=BlogPost)
     class Meta:
         model = User
         fields = ['url', 'username', 'email', 'posts']

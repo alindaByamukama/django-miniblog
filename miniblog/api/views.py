@@ -21,6 +21,9 @@ class BlogPostListCreate(generics.ListCreateAPIView):
     def delete(self, request, *args, **kwargs):
         BlogPost.objects.all().delete()
         return Response(status.HTTP_204_NO_CONTENT)
+    
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 class BlogPostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = BlogPost.objects.all()

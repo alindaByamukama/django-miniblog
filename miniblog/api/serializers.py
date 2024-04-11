@@ -9,7 +9,7 @@ class BlogPostSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'id', 'title', 'content', 'published', 'author']
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    posts = serializers.HyperlinkedRelatedField(many=True, view_name='blogpost-retrieve', read_only=True)
+    posts = serializers.HyperlinkedRelatedField(many=True, view_name='blogpost-detail', read_only=True)
     class Meta:
         model = User
         fields = ['url', 'username', 'email', 'posts']

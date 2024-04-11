@@ -1,4 +1,4 @@
-from rest_framework import generics, status, permissions, viewsets
+from rest_framework import generics, status, permissions, viewsets, filters
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
@@ -26,11 +26,10 @@ class BlogPostViewSet(viewsets.ModelViewSet):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+
+    # Example: http://127.0.0.1:8000/blogposts/?search=blog
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['author__username', 'title']
     
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
-    
-    def get_queryset(self, serializer):
-        # return a list of blog posts by title
-        title = self.kwargs['title']
-        return BlogPost.objects.filter(blogpost__title=title)

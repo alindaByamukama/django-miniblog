@@ -44,26 +44,3 @@ class BlogPostViewSet(viewsets.ModelViewSet):
 
         serializer = BlogPostSerializer(blog_posts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-class BlogPostList(generics.ListAPIView):
-    queryset = BlogPost.objects.all()
-    serializer_class = BlogPostSerializer
-
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    
-
-class BlogPostRetrieve(generics.RetrieveAPIView):
-    queryset = BlogPost.objects.all()
-    serializer_class = BlogPostSerializer
-    lookup_field = "pk"
-
-class BlogPostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = BlogPost.objects.all()
-    serializer_class = BlogPostSerializer
-    lookup_field = "pk"
-    
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
-
-class BlogPostListFilter(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    

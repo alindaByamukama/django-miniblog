@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .models import BlogPost
 
 class BlogPostSerializer(serializers.ModelSerializer):
+    author = serializers.ReadOnlyField(source='author.username')
     class Meta:
         model = BlogPost
         fields = ['id', 'title', 'content', 'published', 'author']

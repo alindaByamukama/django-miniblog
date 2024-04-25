@@ -1,4 +1,9 @@
 from django.db import models
+from django.conf import settings
+# auto generate tokens for users
+from django.db.models import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 
 
 # Create your models here.

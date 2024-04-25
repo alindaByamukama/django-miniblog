@@ -10,6 +10,6 @@ router.register(r'blogposts', views.BlogPostViewSet, basename='blogpost')
 router.register(r'users', views.UserViewSet, basename='user')
 
 urlpatterns = [
-    path('token/', CustomAuthToken.as_view()),
+    path('token/', views.obtain_auth_token),
     path('', include(router.urls)),
 ]

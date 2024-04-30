@@ -8,5 +8,5 @@ router.register(r'blogposts', views.BlogPostViewSet, basename='blogpost')
 router.register(r'users', views.UserViewSet, basename='user')
 
 urlpatterns = [
-    path('', include(router.urls)),
-]
+    path('', views.APIRoot.as_view(), name='api-root'),
+]+router.urls

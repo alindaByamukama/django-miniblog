@@ -1,6 +1,6 @@
 from rest_framework import serializers
-# from django.contrib.auth.models import User
-from .models import BlogPost, CustomUser
+from django.contrib.auth.models import User
+from .models import BlogPost
 
 class BlogPostSerializer(serializers.HyperlinkedModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
@@ -12,5 +12,5 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     posts = serializers.HyperlinkedRelatedField(many=True, view_name='blogpost-detail', read_only=True)
     password = serializers.Charfield(write_only=True)
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['url', 'username', 'email', 'posts', 'password']

@@ -41,7 +41,7 @@ class UserRegistrationViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
 
-class UserLoginView(viewsets.ModelViewSet):
+class UserLoginViewSet(viewsets.ModelViewSet):
     def post(self, request):
         user = authenticate(username=request.data['username'], password=request.data['password'])
         if user:

@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions, viewsets, filters
+from rest_framework import permissions, viewsets, filters, authentication
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
@@ -12,17 +12,25 @@ from .permissions import IsAuthorOrReadOnly
 
 # Create your views here.
 class APIRoot(APIView):
-    def get(self, request, format=None):
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        current_user = request.User
         return Response({
-            'users': reverse('user-list',request=request, format=format),
-            'posts': reverse('blogpost-detail', request=request, format=format)
+            'username': current_user.username,
+            'posts': current_user.posts
         })
-    
-class UserRegistrationView(generics.CreateAPIView):
+
+class UserRegistrationViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
 
-class UserLoginView(APIView):
+class UserLoginViewSet(viewsets.ModelViewSet):
+    
+    serializer_class = UserSerializer
+
     def post(self, request):
         user = authenticate(username=request.data['username'], password=request.data['password'])
         if user:

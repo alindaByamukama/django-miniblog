@@ -17,7 +17,7 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
     # for user in User.objects.all():
     #     Token.objects.get_or_create(user=user)
 
-class DjangoUser(User):
+class CustomUser(User):
     username = models.CharField(max_length=100)
     email = models.EmailField()
 

@@ -135,10 +135,10 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 
-# Use HTTPS for all pages
+# Use HTTPS for all pages - redirects all HTTP to HTTPS
 SECURE_SSL_REDIRECT = True
 
-# Use secure cookies
+# Use secure cookies - ensure session cookie is sent only over HTTPS
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 

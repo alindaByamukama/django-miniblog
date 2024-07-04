@@ -9,18 +9,23 @@ from .models import BlogPost
 from .serializers import BlogPostSerializer, UserSerializer
 from .permissions import IsAuthorOrReadOnly
 
+
 # Create your views here.
 class APIRoot(APIView):
     def get(self, request, format=None):
-        return Response({
-            'users': reverse('user-list',request=request, format=format),
-            'posts': reverse('blogpost-detail', request=request, format=format)
-        })
+        return Response(
+            {
+                "users": reverse("user-list", request=request, format=format),
+                "posts": reverse("blogpost-detail", request=request, format=format),
+            }
+        )
+
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    # list and retrieve 
+    # list and retrieve
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
 
 class BlogPostViewSet(viewsets.ModelViewSet):
     queryset = BlogPost.objects.all()
@@ -29,7 +34,7 @@ class BlogPostViewSet(viewsets.ModelViewSet):
 
     # Example: http://127.0.0.1:8000/blogposts/?search=blog
     filter_backends = [filters.SearchFilter]
-    search_fields = ['author__username', 'title']
-    
+    search_fields = ["author__username", "title"]
+
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

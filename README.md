@@ -1,45 +1,33 @@
-# Django Mini Blog
+### Project Description: MiniBlog
 
-## Project Description: MiniBlog
+**MiniBlog** is a simple blogging application built using the Django web framework and Django REST framework. It allows users to create, read, update, and delete blog posts, providing a basic platform for content management and publication. The application is designed with RESTful API endpoints to facilitate seamless integration with various front-end frameworks or client applications.
 
-MiniBlog is a simple blogging application built using the Django web framework and Django REST framework. It allows users to create, read, update, and delete blog posts, providing a basic platform for content management and publication. The application is designed with RESTful API endpoints to facilitate seamless integration with various front-end frameworks or client applications.
+#### Features
 
-## Features
+1. **User Authentication**:
+   - Secure user registration and login functionality.
+   - Token-based authentication for secure API access.
 
-### User Authentication
+2. **Blog Post Management**:
+   - Create, read, update, and delete (CRUD) operations for blog posts.
+   - Each blog post includes a title, content, publication date, and author information.
+   - Authors can only edit or delete their own posts, ensuring content integrity.
 
-- Secure user registration and login functionality.
-- Token-based authentication for secure API access.
+3. **API Endpoints**:
+   - RESTful API endpoints for managing users and blog posts.
+   - Hyperlinked relationships between users and their respective blog posts.
+   - Search functionality to find blog posts by author or title.
 
-### Blog Post Management
+4. **Security Features**:
+   - HTTPS enforcement and secure cookies to protect data in transit.
+   - CSRF protection to prevent cross-site request forgery attacks.
+   - Configurable login attempt limits to mitigate brute force attacks.
 
-- Create, read, update, and delete (CRUD) operations for blog posts.
-- Each blog post includes a title, content, publication date, and author information.
-- Authors can only edit or delete their own posts, ensuring content integrity.
+5. **Testing**:
+   - Comprehensive unit tests for models, serializers, and views.
+   - Utilizes `pytest` and `pytest-django` for efficient test execution and coverage.
 
-### API Endpoints
-
-- RESTful API endpoints for managing users and blog posts.
-- Hyperlinked relationships between users and their respective blog posts.
-- Search functionality to find blog posts by author or title.
-
-### Security Features
-
-- HTTPS enforcement and secure cookies to protect data in transit.
-- CSRF protection to prevent cross-site request forgery attacks.
-- Configurable login attempt limits to mitigate brute force attacks.
-
-### Testing
-
-- Comprehensive unit tests for models, serializers, and views.
-- Utilizes pytest and pytest-django for efficient test execution and coverage.
-
-### Documentation
-
-- Integrated Swagger documentation for API endpoints.
-- Easily accessible at `http://127.0.0.1:8000/swagger/`.
-
-## Technical Stack
+#### Technical Stack
 
 - **Backend**: Django, Django REST framework
 - **Database**: SQLite (default, easily switchable to other databases like PostgreSQL)

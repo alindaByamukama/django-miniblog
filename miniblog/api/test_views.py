@@ -7,7 +7,7 @@ from .models import BlogPost
 class BlogPostViewSetTest(APITestCase):
     def setUp(self):
         self.client = APIClient()
-        self.user = User.objects.create_user(usernmae='testuser', password='12345')
+        self.user = User.objects.create_user(username='testuser', password='12345')
         self.client.login(username='testuser', password='12345')
         self.blog_post = BlogPost.objects.create(title='Test Post', content='Tests Content', author=self.user)
         self.url = reverse('blogpost-detail', args=[self.blog_post.id])

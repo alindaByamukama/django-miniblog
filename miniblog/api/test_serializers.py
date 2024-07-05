@@ -26,7 +26,7 @@ class UserSerializerTest(APITestCase):
 
     def test_contains_expected_fields(self):
         data = self.serializer.data
-        self.assertCountEqual(data.keys(), ['url', 'username', 'email', 'posts', 'password'])
+        self.assertCountEqual(data.keys(), ['url', 'username', 'email', 'posts'])
 
     def test_username_field_content(self):
         data = self.serializer.data

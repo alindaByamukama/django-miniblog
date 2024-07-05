@@ -136,7 +136,7 @@ REST_FRAMEWORK = {
 }
 
 # Use HTTPS for all pages - redirects all HTTP to HTTPS
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
 
 # Use secure cookies - ensure session cookie is sent only over HTTPS
 SESSION_COOKIE_SECURE = True

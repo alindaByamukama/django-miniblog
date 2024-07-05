@@ -8,7 +8,7 @@ class BlogPostSerializerTest(APITestCase):
         self.user = User.objects.create_user(username='testuser', password='12345')
         self.blog_post = BlogPost.objects.create(title='Test Post', content='Test Content', author=self.user)
         self.request = APIRequestFactory().get('/')
-        self.serializer = BlogPostSerializer(instance=self.blog_post)
+        self.serializer = BlogPostSerializer(instance=self.blog_post, context={'request': self.request})
 
         def test_contains_expected_fields(self):
             data = self.serializer.data
@@ -22,7 +22,7 @@ class UserSerializerTest(APITestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='12345')
         self.request = APIRequestFactory().get('/')
-        self.serializer = UserSerializer(instance=self.user)
+        self.serializer = UserSerializer(instance=self.user, context={'request': self.request})
 
     def test_contains_expected_fields(self):
         data = self.serializer.data

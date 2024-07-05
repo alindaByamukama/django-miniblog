@@ -10,13 +10,13 @@ class BlogPostSerializerTest(APITestCase):
         self.request = APIRequestFactory().get('/')
         self.serializer = BlogPostSerializer(instance=self.blog_post, context={'request': self.request})
 
-        def test_contains_expected_fields(self):
-            data = self.serializer.data
-            self.assertCountEqual(data.keys(), ['url', 'id', 'title', 'content', 'published', 'updated_at', 'author'])
-        
-        def test_author_field_content(self):
-            data = self.serializer.data
-            self.assertEqual(data['author'], self.user.username)
+    def test_contains_expected_fields(self):
+        data = self.serializer.data
+        self.assertCountEqual(data.keys(), ['url', 'id', 'title', 'content', 'published', 'updated_at', 'author'])
+    
+    def test_author_field_content(self):
+        data = self.serializer.data
+        self.assertEqual(data['author'], self.user.username)
 
 class UserSerializerTest(APITestCase):
     def setUp(self):

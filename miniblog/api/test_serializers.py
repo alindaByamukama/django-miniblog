@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from rest_framework.test import APITestCase
+from rest_framework.test import APITestCase, APIRequestFactory
 from .models import BlogPost
 from .serializers import BlogPostSerializer, UserSerializer
 
@@ -7,6 +7,7 @@ class BlogPostSerializerTest(APITestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='12345')
         self.blog_post = BlogPost.objects.create(title='Test Post', content='Test Content', author=self.user)
+        self.request = APIRequestFactory().get('/')
         self.serializer = BlogPostSerializer(instance=self.blog_post)
 
         def test_contains_expected_fields(self):
@@ -20,6 +21,7 @@ class BlogPostSerializerTest(APITestCase):
 class UserSerializerTest(APITestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='12345')
+        self.request = APIRequestFactory().get('/')
         self.serializer = UserSerializer(instance=self.user)
 
     def test_contains_expected_fields(self):

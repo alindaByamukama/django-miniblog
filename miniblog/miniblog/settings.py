@@ -156,3 +156,8 @@ AXES_FAILURE_LIMIT = 5
 
 # Lockout period in hours
 AXES_COOLOFF_TIME = 1
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]

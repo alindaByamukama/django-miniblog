@@ -19,6 +19,7 @@ class BlogPostViewSetTest(APITestCase):
 
     def test_create_blog_post(self):
         data = {'title': 'New Post', 'content': 'New Content', 'author': self.user.id}
+        self.client.force_authenticate(user=self.user)
         response = self.client.post(reverse('blogpost-list'), data, format='json', follow=True)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['title'], 'New Post')

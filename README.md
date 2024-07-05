@@ -33,55 +33,70 @@
 - **Database**: SQLite (default, easily switchable to other databases like PostgreSQL)
 - **Authentication**: Django Token Authentication
 - **Testing**: pytest, pytest-django
+- **Documentation**: Swagger (drf-yasg)
 
-#### Getting Started
+## Getting Started
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/miniblog.git
-   cd miniblog
-   ```
+### Clone the repository:
 
-2. **Create and activate a virtual environment**:
-   ```bash
-   python3 -m venv env
-   source env/bin/activate
-   ```
+```bash
+git clone https://github.com/yourusername/miniblog.git
+cd miniblog
+```
 
-3. **Install the dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Create and activate a virtual environment:
 
-4. **Apply migrations**:
-   ```bash
-   python manage.py makemigrations
-   python manage.py migrate
-   ```
+```bash
+python3 -m venv env
+source env/bin/activate
+```
 
-5. **Run the development server**:
-   ```bash
-   python manage.py runserver
-   ```
+### Install the dependencies:
 
-6. **Run the tests**:
-   ```bash
-   pytest
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-#### Usage
+### Apply migrations:
 
-- **Access the API**:
-  - The API endpoints can be accessed at `http://127.0.0.1:8000/`.
-  - Example endpoints:
-    - `http://127.0.0.1:8000/blogposts/` - List and create blog posts.
-    - `http://127.0.0.1:8000/users/` - List and create users.
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
 
-- **Authentication**:
-  - Obtain a token by providing valid credentials to the login endpoint.
-  - Use the token to access protected endpoints.
+### Run the development server:
 
-#### Contributing
+```bash
+python manage.py runserver
+```
+
+### Run the tests:
+
+```bash
+pytest
+```
+
+## Usage
+
+### Access the API:
+
+The API endpoints can be accessed at `http://127.0.0.1:8000/`.
+
+Example endpoints:
+- `http://127.0.0.1:8000/blogposts/` - List and create blog posts.
+- `http://127.0.0.1:8000/users/` - List and create users.
+
+### Authentication:
+
+- Obtain a token by providing valid credentials to the login endpoint.
+- Use the token to access protected endpoints.
+
+### Documentation:
+
+- Swagger UI: `http://127.0.0.1:8000/swagger/`
+- ReDoc: `http://127.0.0.1:8000/redoc/`
+
+## Contributing
 
 Contributions are welcome! Please fork the repository and submit pull requests with improvements or bug fixes. Ensure all tests pass and code is well-documented.
 

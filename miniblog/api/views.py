@@ -28,7 +28,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class BlogPostViewSet(viewsets.ModelViewSet):
-    queryset = BlogPost.objects.all()
+    queryset = BlogPost.objects.all().order_by('-published')
     serializer_class = BlogPostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 

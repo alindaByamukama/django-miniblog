@@ -1,6 +1,8 @@
 ### Project Description: MiniBlog
 
-**MiniBlog** is a simple blogging application built using the Django web framework and Django REST framework. It allows users to create, read, update, and delete blog posts, providing a basic platform for content management and publication. The application is designed with RESTful API endpoints to facilitate seamless integration with various front-end frameworks or client applications.
+**Django Miniblog is a simple blogging api** built using the Django web framework and Django REST framework. It allows users to create, read, update, and delete blog posts, providing a basic platform for content management and publication. The application is designed with RESTful API endpoints to facilitate seamless integration with various front-end frameworks or client applications.
+
+**Demo**: [django-miniblog live link](https://django-miniblog.onrender.com)
 
 #### Features
 

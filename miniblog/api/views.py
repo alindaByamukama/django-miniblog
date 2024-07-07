@@ -49,3 +49,13 @@ class BlogPostViewSet(viewsets.ModelViewSet):
     def retrieve(self, request, *args, **kwargs):
         logger.debug(f"Retrieving blog post with id: {kwargs.get('pk')}")
         return super().retrieve(request, *args, **kwargs)
+    
+# class RegisterView(viewsets.ModelViewSet):
+#     serializer_class = RegisterSerializer
+#     http_method_names = ['post']
+
+#     def create(self, request, *args, **kwargs):
+#         serializer = self.get_serializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data, status=status.HTTP_201_CREATED)

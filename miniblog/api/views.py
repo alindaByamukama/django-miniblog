@@ -54,7 +54,7 @@ class BlogPostViewSet(viewsets.ModelViewSet):
 class RegisterViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [permissions.AllowAny]
 
     @action(detail=False, methods=['post'])
     def create_user(self, request, *args, **kwargs):

@@ -8,6 +8,17 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">    
 </head>
 <body>
+    <header>
+        <h1>Welcome to the Django Miniblog</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'blog_list' %}">Blog List</a></li>
+                <li><a href="{% url 'user_list' %}">User List</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                {% comment %} <li><a href="{% url 'register' %}">Register</a></li> {% endcomment %}
+            </ul>
+        </nav>
+    </header>
     
 </body>
 </html>

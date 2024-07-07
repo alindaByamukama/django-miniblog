@@ -20,6 +20,7 @@ class APIRoot(APIView):
             {
                 "users": reverse("user-list", request=request, format=format),
                 "posts": reverse("blogpost-detail", request=request, format=format),
+                "register": reverse("register-detail", request=request, format=format),
             }
         )
 

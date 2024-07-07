@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework import permissions, viewsets, filters
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -9,6 +11,7 @@ from .models import BlogPost
 from .serializers import BlogPostSerializer, UserSerializer
 from .permissions import IsAuthorOrReadOnly
 
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 class APIRoot(APIView):
@@ -38,3 +41,11 @@ class BlogPostViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+    def list(self, request, *args, **kwargs):
+        logger.debug("Listing blog posts")
+        return super().list(request, *args, **kwargs)
+
+    def retrieve(self, request, *args, **kwargs):
+        logger.debug(f"Retrieving blog post with id: {kwargs.get('pk')}")
+        return super().retrieve(request, *args, **kwargs)

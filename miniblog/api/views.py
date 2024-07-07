@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from django.contrib.auth.models import User
 
 from .models import BlogPost
-from .serializers import BlogPostSerializer, UserSerializer
+from .serializers import BlogPostSerializer, UserSerializer, RegisterSerializer
 from .permissions import IsAuthorOrReadOnly
 
 logger = logging.getLogger(__name__)

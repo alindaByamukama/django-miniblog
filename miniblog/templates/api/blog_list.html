@@ -12,6 +12,13 @@
             <h1>Blog Posts</h1>
         </div>
     </header>
+    <div class="container">
+        <ul>
+            {% for blog in blogs %}
+                <li>{{ blog.title }} - {{ blog.content }}</li>
+            {% endfor %}
+        </ul>
+    </div>
     
 </body>
 </html>

@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from django.contrib.auth.models import User
 
 from .models import BlogPost
-from .serializers import BlogPostSerializer, UserSerializer, RegisterSerializer
+from .serializers import BlogPostSerializer, UserSerializer
 from .permissions import IsAuthorOrReadOnly
 
 logger = logging.getLogger(__name__)
@@ -51,12 +51,14 @@ class BlogPostViewSet(viewsets.ModelViewSet):
         logger.debug(f"Retrieving blog post with id: {kwargs.get('pk')}")
         return super().retrieve(request, *args, **kwargs)
 
-class RegisterView(viewsets.ModelViewSet):
+class RegisterViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    serializer_class = RegisterSerializer
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
 
-    def create(self, request, *args, **kwargs):
+    @action(detail=False, methods=['post'])
+    def create_user(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
+        self.perform_create(serializer)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

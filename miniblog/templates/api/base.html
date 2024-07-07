@@ -1,0 +1,31 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Django Miniblog{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">    
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Django Miniblog</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'blog_list' %}">Blog List</a></li>
+                <li><a href="{% url 'user_list' %}">User List</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <img src="{% static 'static/images/python-django-logo.png' %}" alt="Python Django Logo" class="logo">
+        <p>&copy; <span id="year"></span> | Django Miniblog | <a href="https://github.com/alindaByamukama/django-miniblog" target="_blank" rel="noopener noreferrer" title="Alinda's Project Source Code">GitHub Source Code</a></p>
+    </footer>
+    <script src="{% static 'scripts.js' %}"></script>
+</body>
+</html>

@@ -1,27 +1,10 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog List</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Blog Posts</h1>
-        </div>
-    </header>
-    <div class="container">
-        <ul>
-            {% for blog in blogs %}
-                <li>{{ blog.title }} - {{ blog.content }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <footer>
-        <p>Django Miniblog &copy; 2024 | <a href="https://github.com/alindaByamukama/django-miniblog" target="_blank" rel="noopener noreferrer">GitHub Source Code</a></p>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Blog List{% endblock %}
+{% block content %}
+<h2>Blog Posts</h2>
+<ul>
+    {% for post in blogposts %}
+    <li>{{ post.title }} by {{ post.author }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

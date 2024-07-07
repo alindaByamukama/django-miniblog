@@ -5,6 +5,12 @@ body {
     background-color: #f4f4f4;
 }
 
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
 header {
     background-color: #333;
     color: #fff;

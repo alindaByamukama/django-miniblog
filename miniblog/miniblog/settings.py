@@ -166,3 +166,7 @@ AUTHENTICATION_BACKENDS = [
     'axes.backends.AxesStandaloneBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+ALLOWED_HOSTS = [
+    'django-miniblog.onrender.com'
+]

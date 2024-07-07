@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: django-miniblog
+    env: python
+    buildCommand: 
+      - pip install -r requirements.txt
+      - python manage.py collectstatic --noinput
+      - python manage.py migrate
+    startCommand: gunicorn miniblog.wsgi:application --bind 0.0.0.0:8000
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: miniblog.settings
+      - key: SECRET_KEY
+        value: your_secret_key
+      - key: DATABASE_URL
+        value: your_database_url

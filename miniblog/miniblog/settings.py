@@ -21,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-_cyym4_!os0s!7ae@9)ofb5=^b!_0l3()-y!xqr-56)0$#obi@"
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['alindab.pythonanywhere.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'django-miniblog.onrender.com', 'localhost', '127.0.0.1'
+]
 
 # Application definition
 
@@ -165,8 +167,4 @@ AXES_COOLOFF_TIME = 1
 AUTHENTICATION_BACKENDS = [
     'axes.backends.AxesStandaloneBackend',
     'django.contrib.auth.backends.ModelBackend',
-]
-
-ALLOWED_HOSTS = [
-    'django-miniblog.onrender.com'
 ]
